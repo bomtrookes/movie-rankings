@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Create Movie</h1>
-  <%= simple_form @movie do |f| %>
+  <%= simple_form_for @movie do |f| %>
     <%= f.input :title %>
     <%= f.input :year %>
     <%= f.input :genre %>

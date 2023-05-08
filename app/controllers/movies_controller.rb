@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = Movie.order(rating: :desc)
   end
 
   def new
@@ -8,14 +8,18 @@ class MoviesController < ApplicationController
     @ranking = @movie.build_ranking
   end
 
-  def create_table
+  def create
     @movie = Movie.new(movie_params)
-    redirect_to new_ranking_path
+    if @movie.save
+      redirect_to new_movie_ranking_path(@movie)
+    else
+      render :new
+    end
   end
 
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :year, :genre)
+    params.require(:movie).permit(:title, :year, :genre, :rating)
   end
 end

@@ -1,6 +1,10 @@
 class Movie < ApplicationRecord
   has_one :ranking, dependent: :destroy
 
+  validates :title, presence: true
+  validates :year, presence: true
+  validates :genre, presence: true
+
   def total_score
     if ranking.present?
       sum = ranking.story +

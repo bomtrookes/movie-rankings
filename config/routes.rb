@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :movies
-  resources :rankings
+  resources :movies do
+    resources :rankings
+  end
 
 end

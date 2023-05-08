@@ -5,13 +5,19 @@ class RankingsController < ApplicationController
   end
 
   def new
+    @movie = Movie.find(params[:movie_id])
     @ranking = Ranking.new
   end
 
   def create
+    @movie = Movie.find(params[:movie_id])
     @ranking = Ranking.new(ranking_params)
-    @ranking.save
-    redirect_to movies_path
+    if @ranking.save
+      @movie.update!(rating: @movie.total_score)
+      redirect_to movies_path
+    else
+      render :new
+    end
   end
 
   private
