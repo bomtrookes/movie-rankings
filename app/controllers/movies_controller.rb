@@ -10,11 +10,12 @@ class MoviesController < ApplicationController
 
   def create_table
     @movie = Movie.new(movie_params)
+    redirect_to new_ranking_path
   end
 
   private
 
   def movie_params
-    params.permit
+    params.require(:movie).permit(:title, :year, :genre)
   end
 end
