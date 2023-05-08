@@ -6,11 +6,11 @@ Ranking.destroy_all
 puts "Seeding the database..."
 
 Movie.create!(title: "The Fellowship of the Ring" , year: 2001 , genre: "Fantasy")
-Movie.create!(title: "The Matix", year: 1991 , genre: "Sci-Fi")
+Movie.create!(title: "The Martix", year: 1999 , genre: "Sci-Fi")
 Movie.create!(title: "Let The Right One In", year: 2008, genre: "Horror" )
 Movie.create!(title: "The Shining", year: 1980, genre: "Horror")
 Movie.create!(title: "The Empire Strikes Back", year: 1980 , genre: "Sci-Fi" )
-Movie.create!(title: "Rush Hour", year: 1991 , genre: "Action" )
+Movie.create!(title: "Rush Hour", year: 1997 , genre: "Action" )
 
 Ranking.create!(story: 10,
                 acting: 9,
@@ -71,5 +71,17 @@ Ranking.create!(story: 7,
                 characters: 9,
                 enjoyment: 9,
                 movie_id: 5)
+
+Ranking.create!(story: 6,
+                acting: 7,
+                dialog: 7,
+                cinematography: 5,
+                soundtrack: 5,
+                style: 5,
+                pacing: 9,
+                originality: 6,
+                characters: 9,
+                enjoyment: 9,
+                movie_id: 6)
 
 puts "Done seeding!"

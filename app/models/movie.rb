@@ -3,7 +3,7 @@ class Movie < ApplicationRecord
 
   def total_score
     if ranking.present?
-      ranking.story +
+      sum = ranking.story +
       ranking.acting +
       ranking.dialog +
       ranking.cinematography +
@@ -13,6 +13,7 @@ class Movie < ApplicationRecord
       ranking.originality +
       ranking.characters +
       ranking.enjoyment
+      return sum.to_f / 10
     else
       0
     end
