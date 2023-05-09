@@ -23,7 +23,12 @@ class RankingsController < ApplicationController
   private
 
   def ranking_params
-    params.require(:ranking).permit(:story, :acting, :dialog, :cinematography, :soundtrack, :style, :pacing, :originality, :characters, :enjoyment, :movie_id)
+    params.require(:ranking)
+      .permit(
+        :story, :acting, :dialog,
+        :cinematography, :soundtrack,
+        :style, :pacing, :originality,
+        :characters, :enjoyment, :movie_id)
   end
 
 end
