@@ -1,4 +1,4 @@
-url = "https://tmdb.lewagon.com/movie/top_rated?api_key=#{ENV['API_KEY']}"
+url = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['API_KEY']}"
 
 puts "Seeding the database..."
 
