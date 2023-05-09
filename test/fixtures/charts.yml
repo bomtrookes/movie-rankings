@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: one
+  ranking: one
+  rating: 1.5
+  review: MyText
+
+two:
+  movie: two
+  ranking: two
+  rating: 1.5
+  review: MyText

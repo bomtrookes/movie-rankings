@@ -11,7 +11,6 @@ class CreateRankings < ActiveRecord::Migration[7.0]
       t.integer :originality
       t.integer :characters
       t.integer :enjoyment
-      t.references :movie, null: false, foreign_key: true
       t.timestamps
     end
   end
