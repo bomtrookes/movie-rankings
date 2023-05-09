@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 gem 'simple_form'
 gem 'bootstrap'
+gem "dotenv-rails", groups: %i[ development test ]
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

@@ -1,7 +1,6 @@
-puts "Destroying all records..."
+url = https://tmdb.lewagon.com/movie/top_rated?api_key=ENV[APIKEY]
 
-Movie.destroy_all
-Ranking.destroy_all
+
 
 puts "Seeding the database..."
 
