@@ -1,15 +1,26 @@
+require "open-uri"
+require "httparty"
+
 url = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['API_KEY']}"
+
+response = HTTParty.get(url)
+data = JSON.parse(response.body)
+
+
+puts "Emptying the database..."
+
+Movie.destroy_all
 
 puts "Seeding the database..."
 
-Movie.create!(title: "The Fellowship of the Ring", year: 2001 , genre: "Fantasy")
-Movie.create!(title: "The Martix", year: 1999 , genre: "Sci-Fi")
-Movie.create!(title: "Let The Right One In", year: 2008, genre: "Horror")
-Movie.create!(title: "The Shining", year: 1980, genre: "Horror")
-Movie.create!(title: "The Empire Strikes Back", year: 1980 , genre: "Sci-Fi")
-Movie.create!(title: "Rush Hour", year: 1997 , genre: "Action")
-Movie.create!(title: "The Dark Knight", year: 2008 , genre: "Action")
-Movie.create!(title: "The Godfather", year: 1972 , genre: "Crime")
-Movie.create!(title: "The Godfather: Part II", year: 1974 , genre: "Crime")
+data['results'].each do |result|
+  Movie.create!(
+    title: result['title'],
+    synopsis: result['overview'],
+    year: result['release_date'],
+    poster_url: "https://image.tmdb.org/t/p/w500/#{result['poster_path']}",
+    genre: result['genre_ids'].to_s,
+  )
+end
 
 puts "Done seeding!"
