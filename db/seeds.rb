@@ -1,26 +1,33 @@
-require "open-uri"
-require "httparty"
+# require "open-uri"
+# require "httparty"
 
-url = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['API_KEY']}"
+# url = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{ENV['API_KEY']}"
 
-response = HTTParty.get(url)
-data = JSON.parse(response.body)
+# response = HTTParty.get(url)
+# data = JSON.parse(response.body)
 
 
-puts "Emptying the database..."
+# puts "Emptying the database..."
 
-Movie.destroy_all
+# Movie.destroy_all
 
-puts "Seeding the database..."
+# puts "Seeding the database..."
 
-data['results'].each do |result|
-  Movie.create!(
-    title: result['title'],
-    synopsis: result['overview'],
-    year: result['release_date'],
-    poster_url: "https://image.tmdb.org/t/p/w500/#{result['poster_path']}",
-    genre: result['genre_ids'].to_s,
-  )
-end
+# data['results'].each do |result|
+#   Movie.create!(
+#     title: result['title'],
+#     synopsis: result['overview'],
+#     year: result['release_date'],
+#     poster_url: "https://image.tmdb.org/t/p/w500/#{result['poster_path']}",
+#     genre: result['genre_ids'].to_s,
+#   )
+# end
 
-puts "Done seeding!"
+# puts "Done seeding!"
+
+Tmdb::Api.key("#{ENV['API_KEY']}")
+search = Tmdb::Search.movie('batman')
+
+titles = search.results.map { |movie| movie.title }
+
+puts titles

@@ -1,4 +1,5 @@
 <div class="container p-3">
+
   <h1>Ranking <%= @movie.title %></h1>
   <%= simple_form_for [@movie, @ranking] do |f| %>
     <%= f.input :story, label: false, placeholder: "Story?" %>
@@ -15,3 +16,8 @@
     <%= f.submit %>
   <% end %>
 </div>
+
+<%# Tmdb::Api.key("#{ENV['API_KEY']}")
+search = Tmdb::Search.movie('batman')
+titles = search.results.map { |movie| movie.title }
+puts titles %>
